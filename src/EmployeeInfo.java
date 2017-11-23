@@ -121,7 +121,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         btn_new = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table_data = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
@@ -407,11 +407,11 @@ public class EmployeeInfo extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
-        jButton6.setText("Clear");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btn_clear.setText("Clear");
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btn_clearActionPerformed(evt);
             }
         });
 
@@ -429,7 +429,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_delete)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6)
+                .addComponent(btn_clear)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -441,7 +441,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
                     .addComponent(btn_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel5.add(jPanel6);
@@ -550,9 +550,12 @@ public class EmployeeInfo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_bloodgroupActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        
+        Clearfields();
+        
+        
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     private void btn_imageuploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imageuploadActionPerformed
 
@@ -866,6 +869,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Table_data;
+    private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_imageupload;
     private javax.swing.JButton btn_new;
@@ -873,7 +877,6 @@ public class EmployeeInfo extends javax.swing.JFrame {
     private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel imagelabel;
-    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox_qualification;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JDesktopPane jDesktopPane1;
