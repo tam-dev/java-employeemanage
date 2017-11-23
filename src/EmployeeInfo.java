@@ -118,7 +118,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btn_save = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         btn_new = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -383,8 +383,13 @@ public class EmployeeInfo extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
-        jButton5.setText("Delete");
+        btn_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
         btn_update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
         btn_update.setText("Update");
@@ -422,7 +427,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_update)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(btn_delete)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap())
@@ -435,7 +440,7 @@ public class EmployeeInfo extends javax.swing.JFrame {
                     .addComponent(btn_new, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(btn_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -793,6 +798,37 @@ public class EmployeeInfo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_updateActionPerformed
 
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+
+        if (txt_employeeid.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "PLEASE SELECT DATA TO DELETE!");
+        } else {
+            int p = JOptionPane.showConfirmDialog(null, "DO YOU REALLY WANT TO DELETE", "Delete", JOptionPane.YES_NO_OPTION);
+
+            if (p == 0) {
+                try {
+                    String sql = "DELETE FROM employeeinfo where EmployeeID=? ";
+                    pst = conn.prepareStatement(sql);
+                    pst.setString(1, txt_employeeid.getText());
+                    pst.execute();
+                    JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                } finally {
+                    try {
+                        rs.close();
+                        pst.close();
+                    } catch (Exception e) {
+                    }
+                }
+            } // end if
+        }// end else
+        Clearfields();
+        update_table();
+
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -830,13 +866,13 @@ public class EmployeeInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Table_data;
+    private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_imageupload;
     private javax.swing.JButton btn_new;
     private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel imagelabel;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox_qualification;
     private com.toedter.calendar.JDateChooser jDateChooser1;
